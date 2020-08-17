@@ -1,0 +1,30 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Ranking</h1>
+    </div>
+  </div>
+
+<div class="container">
+    <div class="row justify-content-center">
+        <table class="table">
+            <thead class="thead-light">
+              <tr>
+                <th scope="col">Posicion #</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Nivel</th>
+              </tr>
+            </thead>
+            <tbody *ngFor="let jugador of jugadores; index as i ">
+              <tr>
+                <th scope="row">{{ i+1 }}°</th>
+                <td>{{ jugador.nombre }}</td>
+                <td>{{ jugador.nivel }}</td>
+              </tr>
+            </tbody>
+          </table>
+    </div>
+
+    <div class="row">
+        <a href="" class="btn btn-info"> Regresar al menu </a>
+    </div>
+</div>

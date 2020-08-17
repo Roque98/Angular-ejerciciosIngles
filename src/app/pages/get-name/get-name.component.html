@@ -1,0 +1,20 @@
+<div class="jumbotron jumbotron-fluid">
+    <div class="container">
+      <h1 class="display-4">Escribe tu nombre</h1>
+    </div>
+  </div>
+  
+<div class="container">
+        <div class="row">
+            <div class="col">
+                <input type="text" placeholder="10 caracteres" maxlength="10" minlength="3" [(ngModel)]="nombre">
+                <p *ngIf="error"> Minimo 4 caracteres </p>
+            </div>
+        </div>
+    
+        <div class="row mt-3">
+            <div class="col">
+                <button class="btn btn-success" (click)="presionarBoton()">Continuar</button>
+            </div>
+        </div>
+</div>

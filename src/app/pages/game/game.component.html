@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <h1>Nivel {{ nivel }}</h1>
+    </div>
+  </div>
+
+  <div class="row">
+    <div
+      plyr
+      style="width: 640px;"
+      plyrType="audio"
+      plyrTitle="Video 1"
+      [plyrPlaysInline]="false"
+      [plyrSources]="audioSources"
+      [plyrOptions] = "optionsPlayer"
+      (plyrInit)="player = $event"
+      (plyrPlay)="played($event)"
+    ></div>
+    <p class="p-2">Repeticiones disponibles: {{ intentosDisponibles }}</p>
+    <button *ngIf="intentosDisponibles>0" class="btn btn-info" (click)="play()">Reproducir</button>
+  </div>
+  
+  <hr>
+  
+  <div class="row">
+    <div class="col">
+      Velocidad del sonido:{{ velocidad }} 
+    </div>
+
+    <div class="col" *ngIf="respondio && !correcto">
+      <b>Respuesta correcta</b> {{ letra }}
+    </div>
+
+    <div class="col">
+      Puntos totales: {{ puntosTotales }}
+    </div>
+
+    <div class="col">
+      Puntos otorgados por este nivel {{ intentosDisponibles + 1 }}
+    </div>
+
+  </div>
+  
+  <hr>
+  
+  <div class="row mb-2">
+    <div class="col-4">
+      <input type="text" placeholder="repuesta" maxlength="1" [(ngModel)]="respuesta"> 
+      <button *ngIf="!respondio" class="btn btn-success ml-2" (click)="verificarRespuesta()">Verificar</button>
+      
+    </div>
+
+    <div class="col" *ngIf="correcto && respondio">
+      <div class="alert alert-success" role="alert">
+        Respuesta Correcta
+      </div>
+    </div>
+
+    <div class="col" *ngIf=" respondio && !correcto">
+      <button (click)="reiniciarJuego()"  class="btn btn-info ml-2" (click)="verificarRespuesta()">Vovlerlo a intentar</button>
+    </div>   
+      
+    <div class="col" *ngIf="!correcto  && respondio">
+      <div class="alert alert-danger" role="alert">
+        Repuesta Incorrecta. Fin del juego
+      </div>
+    </div>
+    
+    
+  </div>
+
+
+</div>
